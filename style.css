@@ -1,0 +1,52 @@
+h1 {
+    text-align: center;
+    font-size: 100px;
+}
+
+h2 {
+    font-size: 60px;
+    text-align: center;
+}
+
+.button {
+    background-color: gainsboro;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    font-size: 60px;
+    border-radius: 10px;
+}
+
+.score {
+    /* text-align: center; */
+
+    margin-top: 50px;
+    margin-left: 530px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 40px;
+    border: 4px solid black;
+    border-radius: 10px;
+    max-width: 800px;
+
+}
+
+
+.startGame {
+    padding-top: 20px;
+    padding-bottom: 30px;
+
+}
+
+.roundDetails {
+    padding-top: 40px;
+}
+
+.span {
+    border-bottom: 2px solid black;
+}
