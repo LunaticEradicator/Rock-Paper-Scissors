@@ -7,27 +7,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Acme&family=Akronim&family=Titillium+Web&display=swap"
+        rel="stylesheet">
+    <!-- Text Style -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Acme&family=Akronim&family=Kalam&family=Spectral&display=swap"
+        rel="stylesheet">
+
+    <!-- Button Style -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Iso&family=Silkscreen&display=swap" rel="stylesheet">
+
     <script src="./script.js" defer></script>
 </head>
 
 <body>
-    <h1>Rock Paper Scissors</h1>
-    <h2>Select An Option from Below </h2>
-    <div class="button">
-        <button class="btn">Rock</button>
-        <button class="btn">Paper</button>
-        <button class="btn">Scissors</button>
-    </div>
-    <div class="score">
-        <span class="roundDetails">Round Details</span>
-        <div class="startGame">
+    <div class="startMenu">
+        <button class="startGameButton"> <a href="#">Start Game</a> </button>
 
-            <span class="scoreUpdate"></span>
+    </div>
+
+    <div class="fullContent">
+
+        <div class="gamePlayContent">
+
+            <div class="headerDesign">
+                <h1>Rock <img src="./IMG/rockPaperScissors.png" alt="rockPaperScissors">
+                    Paper
+                    <img src="./IMG/rockPaperScissors1.png" alt="rockPaperScissors">
+                    Scissors
+                </h1>
+            </div>
+
+            <div class="arrowDesign">
+                <img class="designLeft" src="./IMG/SingleArrowdesign1.png" alt="">
+                <!-- <img class="designLeft" src="./IMG/stylizedArrowDesign.png" alt=""> -->
+                <img class="designLeft" src="./IMG/circleArrowdesign1.png" alt="">
+                <!-- <img class="designLeft" src="./IMG/doubleArrowdesign.png" alt=""> -->
+                <h2>First to Reach 5 Point Win</h2>
+                <!-- <img class="designRight" src="./IMG/doubleArrowdesign1.png" alt=""> -->
+                <img class="designRight" src="./IMG/circleArrowdesign.png" alt="">
+                <!-- <img class="designLeft" src="./IMG/stylizedArrowDesign1.png" alt=""> -->
+                <img class="designRight" src="./IMG/SingleArrowdesign.png" alt="">
+
+            </div>
+
+            <div>
+                <img class="arrowHeadOne" src="./IMG/ArrowDown.png" alt="ArrowHeadDown">
+                <img class="arrowHeadTwo" src="./IMG/ArrowDown.png" alt="ArrowHeadDown">
+                <img class="arrowHeadThree" src="./IMG/ArrowDown.png" alt="ArrowHeadDown">
+            </div>
+
+            <div class="button">
+
+                <div class="outerButton">
+                    <button class="btn">Rock</button>
+                </div>
+
+                <div class="innerButton">
+                    <button class="btn">Paper</button>
+                    <button class="btn">Scissors</button>
+                </div>
+
+            </div>
 
         </div>
-        <div class="resetGame"></div>
-    </div>
 
+        <div class="scoreContent">
+            <span class="roundDetails">Round Details</span>
+            <div class="currentGameScore"></div>
+            <div class="resetGameScore"></div>
+        </div>
+
+    </div>
 </body>
 
 </html>

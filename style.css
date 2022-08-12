@@ -1,52 +1,224 @@
+.mainTransitionIn {
+    animation: transitionIn 0.75s;
+}
+
+@keyframes transitionIn {
+    from {
+        opacity: 0;
+        transform: rotateX(-10deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: rotateX(0);
+    }
+}
+
+* {
+    color: #a9927d;
+    font-family: 'Rubik Iso', cursive;
+    font-family: 'Silkscreen', cursive;
+    font-family: 'Acme', sans-serif;
+    font-family: 'Akronim', cursive;
+    font-family: 'Kalam', cursive;
+    font-family: 'Spectral', serif;
+    border-color: #a9927d;
+    margin: 0px;
+    padding: 0px;
+
+}
+
+body {
+    background-color: #22333b;
+}
+
+/* Heading */
 h1 {
+    display: flex;
+    justify-content: center;
+    margin-top: 2px;
     text-align: center;
-    font-size: 100px;
+    font-size: 80px;
+    border-radius: 11px;
+    border-top: 3.5px solid #a18976;
+    border-radius: 50px;
+    font-family: 'Rubik Iso', cursive;
+    font-family: 'Silkscreen', cursive;
+}
+
+h1>img {
+    max-height: 90px;
+    max-width: 90px;
+    padding: 20px;
 }
 
 h2 {
-    font-size: 60px;
+    font-size: 30px;
     text-align: center;
+    border-radius: 7px;
+    border-bottom: 2px solid #14a085;
+    margin-left: 7px;
+    margin-right: 7px;
 }
 
+/* Button */
 .button {
-    background-color: gainsboro;
-    display: flex;
-    justify-content: space-between;
-}
-
-.btn {
-    font-size: 60px;
-    border-radius: 10px;
-}
-
-.score {
-    /* text-align: center; */
-
-    margin-top: 50px;
-    margin-left: 530px;
+    background-color: #c2b6a5;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: 40px;
-    border: 4px solid black;
-    border-radius: 10px;
-    max-width: 800px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
 
+.btn,
+.restartBtn,
+.startGameButton {
+    padding: 0px 10px;
+    background-color: #22333b;
+    font-family: 'Rubik Iso', cursive;
+    font-family: 'Silkscreen', cursive;
+    font-size: 60px;
+    border: 2.5px solid #14a085;
+    border-radius: 20px;
+}
+
+.restartBtn {
+    margin: 20px;
+}
+
+.innerButton {
+    display: flex;
+    justify-content: space-around;
+}
+
+.outerButton {
+    display: flex;
+    justify-content: center;
+}
+
+.btn:hover {
+    background-color: #000000;
+    box-shadow: 0px 0px 15px 0px #14a085;
+    transform: translateY(4px);
+}
+
+.btn:active {
+    top: 10px;
+    background-color: #ffffff;
+}
+
+.restartBtn:hover {
+    background-color: #000000;
+    box-shadow: 0px 0px 15px 0px #14a085;
+    transform: translateY(4px);
+}
+
+.restartBtn:active {
+    top: 10px;
+    background-color: #ffffff;
 }
 
 
-.startGame {
-    padding-top: 20px;
-    padding-bottom: 30px;
-
+/* Score */
+.scoreContent {
+    margin-top: 7px;
+    padding-top: 5px;
+    margin-left: 580px;
+    text-align: center;
+    font-size: 45px;
+    border-top: 3.5px solid #a18976;
+    border-bottom: 3.5px solid #a18976;
+    border-radius: 50px;
+    max-width: 800px;
 }
 
 .roundDetails {
-    padding-top: 40px;
+    border-bottom: 2px solid #14a085;
+    border-radius: 7px;
 }
 
-.span {
-    border-bottom: 2px solid black;
+.currentGameScore {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+/* Design */
+.arrowHeadOne {
+    max-height: 90px;
+    max-width: 90px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 395px;
+}
+
+.arrowHeadTwo {
+    max-height: 90px;
+    max-width: 90px;
+    margin-top: 15px;
+    margin-bottom: 90px;
+    margin-left: 427px;
+}
+
+.arrowHeadThree {
+    max-height: 90px;
+    max-width: 90px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 360px;
+}
+
+.arrowDesign {
+    display: flex;
+    justify-content: center;
+}
+
+.arrowDesign>img {
+    max-height: 40px;
+    max-width: 40px;
+}
+
+.designLeft,
+.designRight {
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 2px;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-top: 5.5px;
+}
+
+/* StartButton */
+.startGameButton {
+    position: absolute;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    font-size: 50px;
+
+    transform: translate(-50%, -50%);
+    background-color: #000000;
+    box-shadow: 0px 0px 15px 0px #14a085;
+}
+
+
+.startGameButton>a {
+    font-family: 'Rubik Iso', cursive;
+    font-family: 'Silkscreen', cursive;
+    text-decoration: none;
+}
+
+.startGameButton:hover {
+    background-color: #ffffff;
+    box-shadow: 0px 0px 15px 0px #14a085;
+}
+
+/* Menu*/
+.gameOver {
+    position: absolute;
+    top: 33%;
+    left: 1%;
+    border: 3.5px solid #a18976;
+    border-radius: 20px;
+    padding: 20px
 }

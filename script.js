@@ -1,38 +1,81 @@
-
 // Set hardcoded value
 let computerInput = ["rock", "paper", "scissors"];
+let userInput;
 
 // Score
 let playerScore = 0;
 let computerScore = 0;
 let roundPlayed = 0;
 
-// Dom Manipulation //
+// HTML Element Selection //
+const fullContent = document.querySelector(".fullContent");
+const gamePlayContent = document.querySelector(".gamePlayContent");
 const btn = document.querySelectorAll(".btn")
-const score = document.querySelector(".score")
-const startGame = document.querySelector(".startGame");
-const resetGame = document.querySelector(".resetGame");
+const scoreContent = document.querySelector(".scoreContent")
+const currentGameScore = document.querySelector(".currentGameScore");
+const resetGameScore = document.querySelector(".resetGameScore");
 
-
+//eachRound DOM//
 let roundNumber = document.querySelector(".roundDetails");
-let playerRoundScore = document.createElement("div");
-let computerRoundScore = document.createElement("div");
-let roundStatus = document.createElement("div");
-let eachRoundEndScore = document.createElement("div");
+let roundDraw = document.createElement("div");
+let roundResult = document.createElement("div");
+let roundScore = document.createElement("div");
+
+//endRound DOM//
+let endText = document.createElement("div");
+let endGameResult = document.createElement("div");
+let endGameScore = document.createElement("div");
+
+let startGameButton = document.querySelector(".startGameButton");
+let restartGameButton = document.createElement("button");
+let startMenu = document.querySelector(".startMenu");
+
+// ------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+startMenu.hidden = false;
+gamePlayContent.hidden = true;
+scoreContent.hidden = true;
+
+startGameButton.addEventListener("click", e => {
+    startMenu.hidden = true;
+    gamePlayContent.hidden = false;
+    scoreContent.hidden = false;
+    fullContent.classList.add("mainTransitionIn");
+})
 
 
-let endScore = document.createElement("div");
-let playerWin = document.createElement("div");
-let gameDraw = document.createElement("div");
-let playerLose = document.createElement("div");
+// When user press a button playGame
+for (let eachBtn of btn) {
+    eachBtn.addEventListener("click", (e) => {
+        if (playerScore === 5 || computerScore === 5) {
+            eachBtn.disabled = true;
+        }
+        else {
+            userInput = eachBtn.textContent.toLowerCase(); // gives the name of userInput
+            playGame();                                    //a variable that has not been declared, it will automatically become a GLOBAL variable.
+        }
+    })
+}
 
-let restartButton = document.createElement("button");
+// btn.forEach(eachBtn => {
+//     eachBtn.addEventListener("click", (e) => {
+//         if (playerScore === 5 || computerScore === 5) {
+//             eachBtn.disabled = true;
+//         }
+//         else {
+//             userInput = eachBtn.textContent.toLowerCase(); // gives the name of userInput//a variable that has not been declared, it will automatically become a GLOBAL variable.
+//             playGame();
+//         }
+//     })
+// })
+
 
 // random computerGuess generator
 function computerGuess() {
     let computerGuess = computerInput[Math.floor(Math.random() * computerInput.length)];
     return computerGuess;
 }
+
 
 // function to play a single round 
 function gameLogic(playerDraw, computerDraw) {
@@ -59,122 +102,111 @@ function gameLogic(playerDraw, computerDraw) {
     }
 }
 
-// When user press a button call the function of playGame
-
-btn.forEach(btnEach => {
-
-    btnEach.addEventListener("click", (e) => {
-        if (roundPlayed === 5) {
-            btn.disabled = true;
-        }
-        else {
-            userInput = btnEach.textContent.toLowerCase(); // gives the name of userInput//a variable that has not been declared, it will automatically become a GLOBAL variable.
-            playGame();
-            restartGame();
-        }
-    })
-})
-
-
 function playGame() {
-
     playerDraw = userInput;
     computerDraw = computerGuess();
     roundPlayed++;
-    eachRoundScore();
+    eachRoundScore();                                   //playerScore and computerScore is in this function
+    fullContent.classList.remove("mainTransitionIn");
 
-    if (roundPlayed === 5) {
+    if (playerScore === 5 || computerScore === 5) {
         finalScore();
+        restartGame();
     }
-
-    console.log(`Round    Played ${roundPlayed}`);
     console.log(`Player   Score ${playerScore}`);
     console.log(`Computer Score ${computerScore}`);
     console.log(`----------------------------------`);
 }
+
+// To Capitalize the letter
 function capitalLetter(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
+
 function eachRoundScore() {
+    roundNumber.textContent = `Round ${roundPlayed} `;
+    currentGameScore.append(roundNumber);
 
-    roundNumber.textContent = `Round ${roundPlayed} of 5`;
-    startGame.append(roundNumber);
+    roundResult.classList.add("eachRoundFinalScore");
+    roundResult.textContent = `Round Status : ${gameLogic(playerDraw, computerDraw)} `;
+    currentGameScore.append(roundResult);
 
-    playerRoundScore.classList.add("playerRoundScore");
-    playerRoundScore.textContent = `Player Selected: ${capitalLetter(playerDraw)}`;
-    startGame.append(playerRoundScore);
+    roundDraw.classList.add("playerRoundScore");
+    roundDraw.textContent = ` ${capitalLetter(playerDraw)}  : ${capitalLetter(computerDraw)}`;
+    currentGameScore.append(roundDraw);
 
-    computerRoundScore.classList.add("computerRoundScore");
-    computerRoundScore.textContent = `Computer Selected: ${capitalLetter(computerDraw)}`;
-    startGame.append(computerRoundScore);
+    roundScore.classList.add("eachRoundEndScore");
+    roundScore.textContent = `${playerScore} : ${computerScore}`;
+    currentGameScore.append(roundScore);
 
-    roundStatus.classList.add("eachRoundFinalScore");
-    roundStatus.textContent = `Status Of The Round: ${gameLogic(playerDraw, computerDraw)}`;
-    startGame.append(roundStatus);
-
-    eachRoundEndScore.classList.add("eachRoundEndScore");
-    eachRoundEndScore.textContent = `Player Score: ${playerScore} and Computer Score: ${computerScore}`;
-    startGame.append(eachRoundEndScore);
 }
+
 
 function finalScore() {
 
-    eachRoundEndScore.classList.add("eachRoundEndScore");
-    eachRoundEndScore.textContent = `Player Score: ${playerScore} and Computer Score: ${computerScore}`;
-    resetGame.append(eachRoundEndScore);
-
-
     if (playerScore > computerScore) {
+        endText.textContent = "Hurray, You Won !"
+        endGameResult.classList.add("GameWinText");
+        endGameResult.classList.add("playerWin");
+        endGameResult.textContent = `Seems like you are a Gifted Talent.`;
 
-        playerWin.classList.add("playerWin");
-        playerWin.textContent = `Congratulations! The Player has Won the game`;
-        resetGame.append(playerWin);
+        resetGameScore.append(endText);
+        resetGameScore.append(endGameResult);
     }
     else if (playerScore === computerScore) {
+        endText.textContent = " A Draw !"
+        endGameResult.classList.add("GameDrawText");
+        endGameResult.classList.add("gameDraw");
+        endGameResult.textContent = ` Oh Snap, Seems like a tie.`;
 
-        gameDraw.classList.add("gameDraw");
-        gameDraw.textContent = `Oh Snap! The game is on a Draw`;
-        resetGame.append(gameDraw);
+        resetGameScore.append(endText);
+        resetGameScore.append(endGameResult);
+
     }
     else {
-        playerLose.classList.add("playerLose");
-        playerLose.textContent = `Seems like you are not even better than a BOT`;
-        resetGame.append(playerLose);
+        endGameResult.classList.add("GameLostText");
+        endText.textContent = "You Lost !";
+        endGameResult.classList.add("gameDraw");
+        endGameResult.textContent = `Guess that you are not even better than a BOT.`;
+
+        resetGameScore.append(endText);
+        resetGameScore.append(endGameResult);
     }
 }
-
 
 
 function restartGame() {
-    if (roundPlayed === 5) {
-        restartButton.textContent = `Restart`;
-        resetGame.append(restartButton);
-        startGame.hidden = true;
-        resetGame.hidden = false;
+    scoreContent.classList.add("mainTransitionIn");
+    scoreContent.classList.add("gameOver");
 
-        restartButton.addEventListener("click", (e) => {
-            console.log("Pressed Restart");
+    gamePlayContent.hidden = true;
+    currentGameScore.hidden = true;
+    resetGameScore.hidden = false;
 
-            startGame.hidden = false;
-            resetGame.hidden = true;
+    restartGameButton.classList.add("restartBtn");
+    restartGameButton.textContent = `Restart`;
+    resetGameScore.append(restartGameButton);
 
 
-            playerScore = 0;
-            computerScore = 0;
-            roundPlayed = 0;
+    restartGameButton.addEventListener("click", (e) => {
+        resetGameScore.hidden = true;
+        currentGameScore.hidden = false;
+        gamePlayContent.hidden = false;
 
-            playerRoundScore.textContent = "";
-            computerRoundScore.textContent = "";
-            eachRoundEndScore.textContent = "";
-            roundStatus.textContent = "";
-            playerWin.textContent = "";
-            gameDraw.textContent = "";
-            playerLose.textContent = "";
-            roundNumber.textContent = "Round Details";
-        })
-    }
+        scoreContent.classList.remove("gameOver");
+        scoreContent.classList.remove("mainTransitionIn");
+        fullContent.classList.add("mainTransitionIn");
+
+        playerScore = 0;
+        computerScore = 0;
+        roundPlayed = 0;
+        roundNumber.textContent = "Round Details";
+        roundDraw.textContent = "";
+        roundScore.textContent = "";
+        roundResult.textContent = "";
+        endGameResult.textContent = "";
+    })
 }
-
 
 
