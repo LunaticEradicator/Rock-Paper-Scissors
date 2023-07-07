@@ -1,92 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
-
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Acme&family=Akronim&family=Titillium+Web&display=swap"
-        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Acme&family=Akronim&family=Titillium+Web&display=swap"
+      rel="stylesheet"
+    />
     <!-- Text Style -->
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Acme&family=Akronim&family=Kalam&family=Spectral&display=swap"
-        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Acme&family=Akronim&family=Kalam&family=Spectral&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Button Style -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik+Iso&family=Silkscreen&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik+Iso&family=Silkscreen&display=swap"
+      rel="stylesheet"
+    />
 
-    <script src="./script.js" defer></script>
-</head>
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
 
-<body>
-    <div class="startMenu">
-        <button class="startGameButton"> <a href="#">Start Game</a> </button>
-
+  <body>
+    <div class="start">
+      <button class="start__button"><a href="#">Start Game</a></button>
     </div>
 
-    <div class="fullContent">
-
-        <div class="gamePlayContent">
-
-            <div class="headerDesign">
-                <h1>Rock <img src="./IMG/rockPaperScissors.png" alt="rockPaperScissors">
-                    Paper
-                    <img src="./IMG/rockPaperScissors1.png" alt="rockPaperScissors">
-                    Scissors
-                </h1>
-            </div>
-
-            <div class="arrowDesign">
-                <img class="designLeft" src="./IMG/SingleArrowdesign1.png" alt="">
-                <!-- <img class="designLeft" src="./IMG/stylizedArrowDesign.png" alt=""> -->
-                <img class="designLeft" src="./IMG/circleArrowdesign1.png" alt="">
-                <!-- <img class="designLeft" src="./IMG/doubleArrowdesign.png" alt=""> -->
-                <h2>First to Reach 5 Point Win</h2>
-                <!-- <img class="designRight" src="./IMG/doubleArrowdesign1.png" alt=""> -->
-                <img class="designRight" src="./IMG/circleArrowdesign.png" alt="">
-                <!-- <img class="designLeft" src="./IMG/stylizedArrowDesign1.png" alt=""> -->
-                <img class="designRight" src="./IMG/SingleArrowdesign.png" alt="">
-
-            </div>
-
-            <div>
-                <img class="arrowHeadOne" src="./IMG/ArrowDown.png" alt="ArrowHeadDown">
-                <img class="arrowHeadTwo" src="./IMG/ArrowDown.png" alt="ArrowHeadDown">
-                <img class="arrowHeadThree" src="./IMG/ArrowDown.png" alt="ArrowHeadDown">
-            </div>
-
-            <div class="button">
-
-                <div class="outerButton">
-                    <button class="btn">Rock</button>
-                </div>
-
-                <div class="innerButton">
-                    <button class="btn">Paper</button>
-                    <button class="btn">Scissors</button>
-                </div>
-
-            </div>
-
+    <div class="game">
+      <div class="game__menu">
+        <div class="game__header">
+          <h1>
+            Rock <img src="<%=require("./src/assets/rockPaperScissors.png")%>"
+            alt="rockPaperScissors" /> Paper <img
+            src="<%=require("./src/assets/rockPaperScissors1.png")%>"
+            alt="rockPaperScissors" /> Scissors
+          </h1>
         </div>
 
-        <div class="scoreContent">
-            <span class="roundDetails">Round Details</span>
-            <div class="currentGameScore"></div>
-            <div class="resetGameScore"></div>
+        <div class="game__design">
+          <img class="game__design__left"
+          src="<%=require("./src/assets/SingleArrowdesign1.png")%>" alt="" />
+          <img class="game__design__left"
+          src="<%=require("./src/assets/circleArrowdesign1.png")%>" alt="" />
+          <h2>First to Reach 5 Point Win</h2>
+          <img class="game__design__right"
+          src="<%=require("./src/assets/circleArrowdesign.png" )%>" alt="" />
+          <img class="game__design__right"
+          src="<%=require("./src/assets/SingleArrowdesign.png" )%>" alt="" />
         </div>
 
+        <div class="game__arrow">
+          <img class="game__arrow__One"
+          src="<%=require("./src/assets/ArrowDown.png")%>" alt="ArrowHeadDown"
+          /> <img class="game__arrow__Two"
+          src="<%=require("./src/assets/ArrowDown.png")%>" alt="ArrowHeadDown"
+          /> <img class="game__arrow__Three"
+          src="<%=require("./src/assets/ArrowDown.png")%>" alt="ArrowHeadDown"
+          />
+        </div>
+
+        <div class="game__button">
+          <div class="game__button__outer">
+            <button class="game__button__style">Rock</button>
+          </div>
+
+          <div class="game__button__inner">
+            <button class="game__button__style">Paper</button>
+            <button class="game__button__style">Scissors</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="game__details">
+        <span class="game__details__round">Round Details</span>
+        <div class="game__details__scoreboard"></div>
+        <div class="game__details__reset"></div>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>

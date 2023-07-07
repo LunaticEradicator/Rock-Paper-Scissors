@@ -1,0 +1,56 @@
+%buttonStyle {
+  padding: 0px 10px;
+  background-color: #22333b;
+  font-family: "Rubik Iso", cursive;
+  font-family: "Silkscreen", cursive;
+  font-size: 60px;
+  border: 2.5px solid #14a085;
+  border-radius: 20px;
+}
+
+.game__details {
+  margin-top: 7px;
+  padding-top: 5px;
+  margin-left: 580px;
+  text-align: center;
+  font-size: 45px;
+  border-top: 3.5px solid #a18976;
+  border-bottom: 3.5px solid #a18976;
+  border-radius: 50px;
+  max-width: 800px;
+  &__round {
+    border-bottom: 2px solid #14a085;
+    border-radius: 7px;
+  }
+  &__restart {
+    display: flex;
+    justify-content: center;
+    &__button {
+      @extend %buttonStyle;
+      // margin: 20px;
+      &:hover {
+        background-color: #000000;
+        box-shadow: 0px 0px 15px 0px #14a085;
+        transform: translateY(4px);
+      }
+      &:active {
+        top: 10px;
+        background-color: #ffffff;
+      }
+    }
+  }
+}
+
+.game__score__current {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.gameOver {
+  position: absolute;
+  top: 33%;
+  left: 1%;
+  border: 3.5px solid #a18976;
+  border-radius: 20px;
+  padding: 20px;
+}

@@ -1,0 +1,58 @@
+@mixin headerStyle($height, $width, $padding) {
+  max-height: $height;
+  max-width: $width;
+  padding: $padding;
+}
+
+headerStyle {
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 2px;
+  margin-left: 2px;
+  margin-right: 2px;
+  margin-top: 5.5px;
+}
+
+.game__header {
+  & > h1 > img {
+    @include headerStyle(95px, 95px, 20px);
+  }
+}
+
+.game__design {
+  display: flex;
+  justify-content: center;
+  & > img {
+    @include headerStyle(45px, 45px, 0);
+  }
+  &__left {
+    @extend headerStyle;
+  }
+  &__right {
+    @extend headerStyle;
+  }
+}
+
+.game__arrow {
+  &__One {
+    max-height: 90px;
+    max-width: 90px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 395px;
+  }
+  &__Two {
+    max-height: 90px;
+    max-width: 90px;
+    margin-top: 15px;
+    margin-bottom: 90px;
+    margin-left: 427px;
+  }
+  &__Three {
+    max-height: 90px;
+    max-width: 90px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 360px;
+  }
+}

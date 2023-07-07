@@ -1,0 +1,35 @@
+%buttonStyle {
+  padding: 0px 10px;
+  background-color: #22333b;
+  font-family: "Rubik Iso", cursive;
+  font-family: "Silkscreen", cursive;
+  font-size: 60px;
+  border: 2.5px solid #14a085;
+  border-radius: 20px;
+}
+
+@mixin buttonPosition($flex, $justify) {
+  display: $flex;
+  justify-content: $justify;
+}
+
+.game__button {
+  &__outer {
+    @include buttonPosition(flex, center);
+  }
+  &__inner {
+    @include buttonPosition(flex, space-around);
+  }
+  &__style {
+    @extend %buttonStyle;
+    &:hover {
+      background-color: #000000;
+      box-shadow: 0px 0px 15px 0px #14a085;
+      transform: translateY(4px);
+    }
+    &:active {
+      top: 10px;
+      background-color: #ffffff;
+    }
+  }
+}
