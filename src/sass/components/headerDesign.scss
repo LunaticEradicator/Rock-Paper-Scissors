@@ -1,10 +1,11 @@
+@use "../util/" as ul;
+
 @mixin headerStyle($height, $width, $padding) {
-  max-height: $height;
-  max-width: $width;
+  height: $height;
+  width: $width;
   padding: $padding;
 }
-
-headerStyle {
+%designStyle {
   padding-left: 2px;
   padding-right: 2px;
   padding-top: 2px;
@@ -14,45 +15,77 @@ headerStyle {
 }
 
 .game__header {
-  & > h1 > img {
-    @include headerStyle(95px, 95px, 20px);
+  font-size: 3rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  text-align: center;
+  border-radius: 11px;
+  border-top: 3.5px solid #a18976;
+  border-radius: 50px;
+  font-family: "Rubik Iso", cursive;
+  font-family: "Silkscreen", cursive;
+  & > img {
+    @include headerStyle(95px, 95px, 5px);
+  }
+
+  @include ul.breakpoint(xLarge) {
+    font-size: 2.5rem;
+    & > img {
+      @include headerStyle(65px, 65px, 5px);
+    }
+  }
+  @include ul.breakpoint(large) {
+    font-size: 2rem;
+    & > img {
+      @include headerStyle(45px, 45px, 5px);
+    }
+  }
+  @include ul.breakpoint(medium) {
+    font-size: 1.3rem;
+    & > img {
+      @include headerStyle(25px, 25px, 5px);
+    }
   }
 }
 
 .game__design {
   display: flex;
+  align-items: center;
   justify-content: center;
+  font-size: 2rem;
+  text-align: center;
+  border-radius: 7px;
+  border-bottom: 2px solid #14a085;
+  margin-left: 7px;
+  margin-right: 7px;
   & > img {
     @include headerStyle(45px, 45px, 0);
   }
   &__left {
-    @extend headerStyle;
+    @extend %designStyle;
   }
   &__right {
-    @extend headerStyle;
+    @extend %designStyle;
   }
-}
 
-.game__arrow {
-  &__One {
-    max-height: 90px;
-    max-width: 90px;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    margin-left: 395px;
+  @include ul.breakpoint(xLarge) {
+    font-size: 1.5rem;
+    & > img {
+      @include headerStyle(30px, 30px, 5px);
+    }
   }
-  &__Two {
-    max-height: 90px;
-    max-width: 90px;
-    margin-top: 15px;
-    margin-bottom: 90px;
-    margin-left: 427px;
+  @include ul.breakpoint(large) {
+    font-size: 1.2rem;
+    & > img {
+      @include headerStyle(25px, 25px, 5px);
+    }
   }
-  &__Three {
-    max-height: 90px;
-    max-width: 90px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 360px;
+  @include ul.breakpoint(medium) {
+    font-size: 1rem;
+    & > img {
+      @include headerStyle(20px, 20px, 5px);
+    }
   }
 }

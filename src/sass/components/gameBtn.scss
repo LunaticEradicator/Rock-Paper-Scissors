@@ -1,9 +1,11 @@
+@use "../util/" as ul;
+
 %buttonStyle {
   padding: 0px 10px;
   background-color: #22333b;
   font-family: "Rubik Iso", cursive;
   font-family: "Silkscreen", cursive;
-  font-size: 60px;
+  font-size: 3.5rem;
   border: 2.5px solid #14a085;
   border-radius: 20px;
 }
@@ -13,12 +15,106 @@
   justify-content: $justify;
 }
 
+.game__arrow {
+  text-align: center;
+}
+
 .game__button {
   &__outer {
-    @include buttonPosition(flex, center);
+    &__rock {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      &__arrow {
+        max-height: 90px;
+        max-width: 90px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        @include ul.breakpoint(xLarge) {
+          max-height: 70px;
+          max-width: 70px;
+          margin-top: 40px;
+          margin-bottom: 5px;
+        }
+        @include ul.breakpoint(large) {
+          max-height: 50px;
+          max-width: 50px;
+          margin-top: 40px;
+          margin-bottom: 5px;
+        }
+        @include ul.breakpoint(medium) {
+          max-height: 40px;
+          max-width: 40px;
+          margin-top: 40px;
+          margin-bottom: 5px;
+        }
+      }
+    }
   }
   &__inner {
-    @include buttonPosition(flex, space-around);
+    display: flex;
+    justify-content: space-around;
+    &__paper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      &__arrow {
+        max-height: 90px;
+        max-width: 90px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        @include ul.breakpoint(xLarge) {
+          max-height: 75px;
+          max-width: 75px;
+          margin-top: 40px;
+          margin-bottom: 5px;
+        }
+        @include ul.breakpoint(large) {
+          max-height: 55px;
+          max-width: 55px;
+          margin-top: 40px;
+          margin-bottom: 5px;
+        }
+        @include ul.breakpoint(medium) {
+          max-height: 35px;
+          max-width: 35px;
+          margin-top: 40px;
+          margin-bottom: 5px;
+        }
+      }
+    }
+    &__scissors {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      &__arrow {
+        max-height: 90px;
+        max-width: 90px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        @include ul.breakpoint(xLarge) {
+          max-height: 75px;
+          max-width: 75px;
+          margin-top: 40px;
+          margin-bottom: 5px;
+        }
+        @include ul.breakpoint(large) {
+          max-height: 55px;
+          max-width: 55px;
+          margin-top: 40px;
+          margin-bottom: 5px;
+        }
+        @include ul.breakpoint(medium) {
+          max-height: 35px;
+          max-width: 35px;
+          margin-top: 40px;
+          margin-bottom: 5px;
+        }
+      }
+    }
   }
   &__style {
     @extend %buttonStyle;
@@ -30,6 +126,15 @@
     &:active {
       top: 10px;
       background-color: #ffffff;
+    }
+    @include ul.breakpoint(xLarge) {
+      font-size: 2.5rem;
+    }
+    @include ul.breakpoint(large) {
+      font-size: 2rem;
+    }
+    @include ul.breakpoint(medium) {
+      font-size: 1.5rem;
     }
   }
 }

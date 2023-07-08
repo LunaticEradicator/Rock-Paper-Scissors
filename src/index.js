@@ -39,18 +39,22 @@ let restartGameDiv = document.createElement("div");
 
 startMenu.hidden = false;
 gamePlayMenu.hidden = true;
-scoreMenu.hidden = true;
+gameContent.hidden = true;
+currentGameScore.hidden = true;
 
 startGameButton.addEventListener("click", (e) => {
   startMenu.hidden = true;
   gamePlayMenu.hidden = false;
-  scoreMenu.hidden = false;
+  gameContent.hidden = false;
   gameContent.classList.add("mainTransitionIn");
 });
 
 // When user press a button playGame
 for (let eachBtn of drawButton) {
   eachBtn.addEventListener("click", (e) => {
+    currentGameScore.hidden = false;
+    currentGameScore.classList.remove("hideBorder");
+    currentGameScore.classList.add("mainTransitionIn");
     if (playerScore === 5 || computerScore === 5) {
       eachBtn.disabled = true;
     } else {
@@ -160,6 +164,7 @@ function restartGame() {
   currentGameScore.hidden = true;
   resetGameScore.hidden = false;
 
+  resetGameScore.classList.add("reset__border");
   restartGameButton.classList.add("game__details__restart__button");
   restartGameButton.textContent = `Restart`;
   restartGameDiv.append(restartGameButton);
@@ -168,10 +173,13 @@ function restartGame() {
     resetGameScore.hidden = true;
     currentGameScore.hidden = false;
     gamePlayMenu.hidden = false;
+    currentGameScore.classList.add("hideBorder");
 
+    currentGameScore.classList.remove("mainTransitionIn");
     scoreMenu.classList.remove("gameOver");
     scoreMenu.classList.remove("mainTransitionIn");
     gameContent.classList.add("mainTransitionIn");
+    resetGameScore.classList.remove("reset__border");
 
     playerScore = 0;
     computerScore = 0;

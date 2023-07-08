@@ -39,12 +39,10 @@
     <div class="game">
       <div class="game__menu">
         <div class="game__header">
-          <h1>
-            Rock <img src="<%=require("./src/assets/rockPaperScissors.png")%>"
-            alt="rockPaperScissors" /> Paper <img
-            src="<%=require("./src/assets/rockPaperScissors1.png")%>"
-            alt="rockPaperScissors" /> Scissors
-          </h1>
+          Rock <img src="<%=require("./src/assets/rockPaperScissors.png")%>"
+          alt="rockPaperScissors" /> Paper <img
+          src="<%=require("./src/assets/rockPaperScissors1.png")%>"
+          alt="rockPaperScissors" /> Scissors
         </div>
 
         <div class="game__design">
@@ -52,31 +50,35 @@
           src="<%=require("./src/assets/SingleArrowdesign1.png")%>" alt="" />
           <img class="game__design__left"
           src="<%=require("./src/assets/circleArrowdesign1.png")%>" alt="" />
-          <h2>First to Reach 5 Point Win</h2>
-          <img class="game__design__right"
+          First to Reach 5 Point Win <img class="game__design__right"
           src="<%=require("./src/assets/circleArrowdesign.png" )%>" alt="" />
           <img class="game__design__right"
           src="<%=require("./src/assets/SingleArrowdesign.png" )%>" alt="" />
         </div>
 
-        <div class="game__arrow">
-          <img class="game__arrow__One"
-          src="<%=require("./src/assets/ArrowDown.png")%>" alt="ArrowHeadDown"
-          /> <img class="game__arrow__Two"
-          src="<%=require("./src/assets/ArrowDown.png")%>" alt="ArrowHeadDown"
-          /> <img class="game__arrow__Three"
-          src="<%=require("./src/assets/ArrowDown.png")%>" alt="ArrowHeadDown"
-          />
-        </div>
-
         <div class="game__button">
           <div class="game__button__outer">
-            <button class="game__button__style">Rock</button>
+            <div class="game__button__outer__rock">
+              <img class="game__button__outer__rock__arrow"
+              src="<%=require("./src/assets/ArrowDown.png")%>"
+              alt="ArrowHeadDown" />
+              <button class="game__button__style">Rock</button>
+            </div>
           </div>
 
           <div class="game__button__inner">
-            <button class="game__button__style">Paper</button>
-            <button class="game__button__style">Scissors</button>
+            <div class="game__button__inner__paper">
+              <img class="game__button__inner__paper__arrow"
+              src="<%=require("./src/assets/ArrowDown.png")%>"
+              alt="ArrowHeadDown" />
+              <button class="game__button__style">Paper</button>
+            </div>
+            <div class="game__button__inner__scissors">
+              <img class="game__button__inner__scissors__arrow"
+              src="<%=require("./src/assets/ArrowDown.png")%>"
+              alt="ArrowHeadDown" />
+              <button class="game__button__style">Scissors</button>
+            </div>
           </div>
         </div>
       </div>

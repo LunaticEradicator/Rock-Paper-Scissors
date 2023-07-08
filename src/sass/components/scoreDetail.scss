@@ -1,23 +1,44 @@
+@use "../util/" as ul;
 %buttonStyle {
   padding: 0px 10px;
   background-color: #22333b;
   font-family: "Rubik Iso", cursive;
   font-family: "Silkscreen", cursive;
-  font-size: 60px;
+  font-size: 3rem;
   border: 2.5px solid #14a085;
   border-radius: 20px;
 }
 
 .game__details {
-  margin-top: 7px;
+  display: flex;
+  justify-content: center;
   padding-top: 5px;
-  margin-left: 580px;
   text-align: center;
-  font-size: 45px;
-  border-top: 3.5px solid #a18976;
-  border-bottom: 3.5px solid #a18976;
-  border-radius: 50px;
+  font-size: 2.5rem;
   max-width: 800px;
+  margin: 0 auto;
+  margin-top: 20px;
+  @include ul.breakpoint(xLarge) {
+    margin-top: 40px;
+    font-size: 2.2rem;
+  }
+  @include ul.breakpoint(large) {
+    margin-top: 40px;
+    font-size: 2rem;
+  }
+  @include ul.breakpoint(medium) {
+    margin-top: 40px;
+    font-size: 1.5rem;
+  }
+  &__scoreboard {
+    border-top: 3.5px solid #a18976;
+    border-bottom: 3.5px solid #a18976;
+    border-radius: 50px;
+    padding: 20px;
+    @include ul.breakpoint(medium) {
+      padding: 10px;
+    }
+  }
   &__round {
     border-bottom: 2px solid #14a085;
     border-radius: 7px;
@@ -47,10 +68,27 @@
 }
 
 .gameOver {
-  position: absolute;
-  top: 33%;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  min-height: 100vh;
+  /* position: absolute; */
+  /* top: 33%; */
+  /* border: 3.5px solid #a18976; */
   left: 1%;
-  border: 3.5px solid #a18976;
   border-radius: 20px;
   padding: 20px;
+  border: 0;
+}
+
+.reset__border {
+  border-top: 3.5px solid #a18976;
+  border-bottom: 3.5px solid #a18976;
+  padding: 20px;
+  border-radius: 50px;
+}
+
+.hideBorder {
+  border-top: 0;
+  border-bottom: 0;
 }
