@@ -3,8 +3,7 @@
 %buttonStyle {
   padding: 0px 10px;
   background-color: #22333b;
-  font-family: "Rubik Iso", cursive;
-  font-family: "Silkscreen", cursive;
+  font-family: var(--font-header);
   font-size: 3.5rem;
   border: 2.5px solid #14a085;
   border-radius: 20px;

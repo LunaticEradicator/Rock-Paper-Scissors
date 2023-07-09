@@ -2,8 +2,8 @@
 %buttonStyle {
   padding: 0px 10px;
   background-color: #22333b;
-  font-family: "Rubik Iso", cursive;
-  font-family: "Silkscreen", cursive;
+  // font-family: "Rubik Iso", cursive;
+  // font-family: "Silkscreen", cursive;
   font-size: 3rem;
   border: 2.5px solid #14a085;
   border-radius: 20px;
@@ -14,7 +14,7 @@
   justify-content: center;
   padding-top: 5px;
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 2.3rem;
   max-width: 800px;
   margin: 0 auto;
   margin-top: 20px;
@@ -35,9 +35,6 @@
     border-bottom: 3.5px solid #a18976;
     border-radius: 50px;
     padding: 20px;
-    @include ul.breakpoint(medium) {
-      padding: 10px;
-    }
   }
   &__round {
     border-bottom: 2px solid #14a085;
@@ -60,6 +57,10 @@
       }
     }
   }
+  &__pause {
+    transition: all 1s;
+    // color: white;
+  }
 }
 
 .game__score__current {
@@ -71,13 +72,11 @@
   display: grid;
   place-items: center;
   align-content: center;
-  min-height: 100vh;
-  /* position: absolute; */
-  /* top: 33%; */
-  /* border: 3.5px solid #a18976; */
-  left: 1%;
+  height: 100vh;
+  width: 100vw;
   border-radius: 20px;
-  padding: 20px;
+  padding: 0px;
+  margin: 0 auto;
   border: 0;
 }
 

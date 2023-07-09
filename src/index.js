@@ -9,6 +9,7 @@ let computerInput;
 let playerScore = 0;
 let computerScore = 0;
 let roundPlayed = 0;
+let roundNeeded = 5;
 
 //Menu
 const gamePlayMenu = document.querySelector(".game__menu");
@@ -19,13 +20,25 @@ let startMenu = document.querySelector(".start");
 const gameContent = document.querySelector(".game");
 const drawButton = document.querySelectorAll(".game__button__style");
 const currentGameScore = document.querySelector(".game__details__scoreboard");
+const gamePause = document.querySelector(".game__details__pause");
 const resetGameScore = document.querySelector(".game__details__reset");
+
+const rockArrowAnimate = document.querySelector(
+  ".game__button__outer__rock__arrow"
+);
+const paperArrowAnimate = document.querySelector(
+  ".game__button__inner__paper__arrow"
+);
+const scissorsArrowAnimate = document.querySelector(
+  ".game__button__inner__scissors__arrow"
+);
 
 //eachRound DOM//
 let roundNumber = document.querySelector(".game__details__round");
 let roundDraw = document.createElement("div");
 let roundResult = document.createElement("div");
 let roundScore = document.createElement("div");
+let roundPlayer = document.createElement("div");
 
 //endRound DOM//
 let endGameText = document.createElement("div");
@@ -43,23 +56,49 @@ gameContent.hidden = true;
 currentGameScore.hidden = true;
 
 startGameButton.addEventListener("click", (e) => {
+  // add arrow animation
+  rockArrowAnimate.classList.add("vert-move");
+  paperArrowAnimate.classList.add("vert-move");
+  scissorsArrowAnimate.classList.add("vert-move");
+
   startMenu.hidden = true;
   gamePlayMenu.hidden = false;
   gameContent.hidden = false;
   gameContent.classList.add("mainTransitionIn");
 });
 
+function disableAllBtn(booleanValue, opacityValue, cursorValue) {
+  for (let i = 0; i < drawButton.length; i++) {
+    drawButton[i].disabled = booleanValue;
+    drawButton[i].style.opacity = opacityValue;
+    drawButton[i].style.cursor = cursorValue;
+  }
+}
+
 // When user press a button playGame
 for (let eachBtn of drawButton) {
   eachBtn.addEventListener("click", (e) => {
-    currentGameScore.hidden = false;
-    currentGameScore.classList.remove("hideBorder");
-    currentGameScore.classList.add("mainTransitionIn");
-    if (playerScore === 5 || computerScore === 5) {
+    // remove arrow animation
+    rockArrowAnimate.classList.remove("vert-move");
+    paperArrowAnimate.classList.remove("vert-move");
+    scissorsArrowAnimate.classList.remove("vert-move");
+
+    if (playerScore === roundNeeded || computerScore === roundNeeded) {
       eachBtn.disabled = true;
     } else {
       userInput = eachBtn.textContent.toLowerCase(); // gives the name of userInput
-      playGame(); //a variable that has not been declared, it will automatically become a GLOBAL variable.
+      computerInput = computerGuess();
+
+      disableAllBtn(true, " 0.3", "not-allowed");
+      gamePause.textContent = `Waiting for Computer Draw`;
+      gamePause.classList.add("mainTransitionIn");
+      setTimeout(() => {
+        gamePause.classList.remove("mainTransitionIn");
+        rockArrowAnimate.classList.remove("mainTransitionIn");
+        paperArrowAnimate.classList.remove("mainTransitionIn");
+        scissorsArrowAnimate.classList.remove("mainTransitionIn");
+      }, 1000);
+      playGame();
     }
   });
 }
@@ -71,35 +110,41 @@ function gameLogic(playerDraw, computerDraw) {
     (playerDraw === "paper" && computerDraw === "paper") ||
     (playerDraw === "scissors" && computerDraw === "scissors")
   ) {
-    return "Round Draw";
+    return "Draw";
   } else if (
     (playerDraw === "rock" && computerDraw === "paper") ||
     (playerDraw === "paper" && computerDraw === "scissors") ||
     (playerDraw === "scissors" && computerDraw === "rock")
   ) {
     computerScore++;
-    return "Computer Wins";
+    return "Computer";
   } else if (
     (playerDraw === "rock" && computerDraw === "scissors") ||
     (playerDraw === "paper" && computerDraw === "rock") ||
     (playerDraw === "scissors" && computerDraw === "paper")
   ) {
     playerScore++;
-    return "Player Wins";
+    return "Player";
   } else {
     return "Please enter a correct value from the option given : Rock | Paper | Scissors";
   }
 }
 
 function playGame() {
-  roundPlayed++;
-  eachRoundScore();
   gameContent.classList.remove("mainTransitionIn");
-
-  if (playerScore === 5 || computerScore === 5) {
-    finalScore();
-    restartGame();
+  roundPlayed++;
+  if (
+    (roundPlayed > 1 && playerScore !== roundNeeded) ||
+    computerScore !== roundNeeded
+  ) {
+    startMenu.hidden = true;
+    gamePlayMenu.hidden = false;
+    gameContent.hidden = false;
+    currentGameScore.hidden = true;
   }
+  eachRound();
+  gameContent.classList.add("mainTransitionIn");
+
   console.log(`Player  Score ${playerScore}`);
   console.log(`Computer Score ${computerScore}`);
   console.log(`----------------------------------`);
@@ -109,31 +154,59 @@ function playGame() {
   console.log(roundPlayed);
 }
 
-function eachRoundScore() {
-  computerInput = computerGuess();
+function eachRound() {
+  roundScore;
+  const logic = gameLogic(userInput, computerInput);
+
+  setTimeout(() => {
+    gamePause.classList.add("mainTransitionIn");
+    gamePause.textContent = `Computer Selected ${capitalLetter(computerInput)}`;
+  }, 2000);
+
+  setTimeout(() => {
+    gamePause.classList.remove("mainTransitionIn");
+    gamePause.textContent = "";
+  }, 3200);
+
+  setTimeout(() => {
+    eachRoundScore(logic);
+  }, 3310);
+}
+
+function eachRoundScore(logic) {
+  disableAllBtn(false, " 1", "pointer");
+  rockArrowAnimate.classList.add("vert-move");
+  paperArrowAnimate.classList.add("vert-move");
+  scissorsArrowAnimate.classList.add("vert-move");
+
+  currentGameScore.hidden = false;
+  currentGameScore.classList.add("mainTransitionIn");
 
   roundNumber.textContent = `Round ${roundPlayed} `;
-  currentGameScore.append(roundNumber);
-
-  roundResult.classList.add("game__details__status");
-  roundResult.textContent = `Round Status : ${gameLogic(
-    userInput,
-    computerInput
-  )} `;
-  currentGameScore.append(roundResult);
-
-  roundDraw.classList.add("game__details__draws");
+  roundPlayer.textContent = `Player : Computer`;
+  roundPlayer.style.marginTop = "5px";
+  roundScore.textContent = `${playerScore} : ${computerScore}`;
+  roundResult.textContent = `Round Won : ${logic} `;
   roundDraw.textContent = ` ${capitalLetter(userInput)}  : ${capitalLetter(
     computerInput
   )}`;
-  currentGameScore.append(roundDraw);
 
+  roundResult.classList.add("game__details__status");
+  roundDraw.classList.add("game__details__draws");
   roundScore.classList.add("game__details__eachRoundScore");
-  roundScore.textContent = `${playerScore} : ${computerScore}`;
+
+  currentGameScore.append(roundNumber);
+  currentGameScore.append(roundPlayer);
   currentGameScore.append(roundScore);
+  currentGameScore.append(roundDraw);
+  currentGameScore.append(roundResult);
+  if (playerScore === roundNeeded || computerScore === roundNeeded) {
+    gameOver();
+    restartGame();
+  }
 }
 
-function finalScore() {
+function gameOver() {
   resetGameScore.append(endGameText);
   resetGameScore.append(endGameResult);
   resetGameScore.append(restartGameDiv);
@@ -154,26 +227,32 @@ function finalScore() {
 }
 
 function restartGame() {
-  restartGameDiv.classList.add("game__details__restart");
-  // restartGameDiv.append(restartGameButton);
-
-  scoreMenu.classList.add("mainTransitionIn");
-  scoreMenu.classList.add("gameOver");
-
   gamePlayMenu.hidden = true;
   currentGameScore.hidden = true;
   resetGameScore.hidden = false;
 
+  scoreMenu.classList.add("mainTransitionIn");
+  scoreMenu.classList.add("gameOver");
+
   resetGameScore.classList.add("reset__border");
   restartGameButton.classList.add("game__details__restart__button");
   restartGameButton.textContent = `Restart`;
+  restartGameDiv.classList.add("game__details__restart");
   restartGameDiv.append(restartGameButton);
 
   restartGameButton.addEventListener("click", (e) => {
+    // add arrow animation
+    rockArrowAnimate.classList.add("vert-move");
+    paperArrowAnimate.classList.add("vert-move");
+    scissorsArrowAnimate.classList.add("vert-move");
+
+    // add arrow transition
+    rockArrowAnimate.classList.remove("mainTransitionIn");
+    paperArrowAnimate.classList.remove("mainTransitionIn");
+    scissorsArrowAnimate.classList.remove("mainTransitionIn");
+
     resetGameScore.hidden = true;
-    currentGameScore.hidden = false;
     gamePlayMenu.hidden = false;
-    currentGameScore.classList.add("hideBorder");
 
     currentGameScore.classList.remove("mainTransitionIn");
     scoreMenu.classList.remove("gameOver");

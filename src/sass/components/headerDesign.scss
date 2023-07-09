@@ -1,4 +1,5 @@
-@use "../util/" as ul;
+@use "../util/" as ut;
+// @import url("https://fonts.googleapis.com/css2?family=Caprasimo&display=swap");
 
 @mixin headerStyle($height, $width, $padding) {
   height: $height;
@@ -24,25 +25,25 @@
   border-radius: 11px;
   border-top: 3.5px solid #a18976;
   border-radius: 50px;
-  font-family: "Rubik Iso", cursive;
-  font-family: "Silkscreen", cursive;
+  font-family: var(--font-header);
+
   & > img {
     @include headerStyle(95px, 95px, 5px);
   }
 
-  @include ul.breakpoint(xLarge) {
+  @include ut.breakpoint(xLarge) {
     font-size: 2.5rem;
     & > img {
       @include headerStyle(65px, 65px, 5px);
     }
   }
-  @include ul.breakpoint(large) {
+  @include ut.breakpoint(large) {
     font-size: 2rem;
     & > img {
       @include headerStyle(45px, 45px, 5px);
     }
   }
-  @include ul.breakpoint(medium) {
+  @include ut.breakpoint(medium) {
     font-size: 1.3rem;
     & > img {
       @include headerStyle(25px, 25px, 5px);
@@ -70,19 +71,19 @@
     @extend %designStyle;
   }
 
-  @include ul.breakpoint(xLarge) {
+  @include ut.breakpoint(xLarge) {
     font-size: 1.5rem;
     & > img {
       @include headerStyle(30px, 30px, 5px);
     }
   }
-  @include ul.breakpoint(large) {
+  @include ut.breakpoint(large) {
     font-size: 1.2rem;
     & > img {
       @include headerStyle(25px, 25px, 5px);
     }
   }
-  @include ul.breakpoint(medium) {
+  @include ut.breakpoint(medium) {
     font-size: 1rem;
     & > img {
       @include headerStyle(20px, 20px, 5px);

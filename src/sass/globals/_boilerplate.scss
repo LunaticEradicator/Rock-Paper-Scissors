@@ -1,3 +1,4 @@
+@use "../util/" as ut;
 html {
   box-sizing: border-box;
   font-size: 100%;
@@ -13,12 +14,8 @@ html {
 
 * {
   color: #a9927d;
-  font-family: "Rubik Iso", cursive;
-  font-family: "Silkscreen", cursive;
-  font-family: "Acme", sans-serif;
-  font-family: "Akronim", cursive;
-  font-family: "Kalam", cursive;
-  font-family: "Spectral", serif;
+  font-family: var(--font-body);
+  letter-spacing: 4px;
   border-color: #a9927d;
   margin: 0px;
   padding: 0px;
