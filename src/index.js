@@ -90,10 +90,10 @@ for (let eachBtn of drawButton) {
       computerInput = computerGuess();
 
       disableAllBtn(true, " 0.3", "not-allowed");
-      gamePause.textContent = `Waiting for Computer Draw`;
-      gamePause.classList.add("mainTransitionIn");
+      // gamePause.textContent = `Waiting for Computer Draw`;
+      // gamePause.classList.add("mainTransitionIn");
       setTimeout(() => {
-        gamePause.classList.remove("mainTransitionIn");
+        // gamePause.classList.remove("mainTransitionIn");
         rockArrowAnimate.classList.remove("mainTransitionIn");
         paperArrowAnimate.classList.remove("mainTransitionIn");
         scissorsArrowAnimate.classList.remove("mainTransitionIn");
@@ -161,16 +161,16 @@ function eachRound() {
   setTimeout(() => {
     gamePause.classList.add("mainTransitionIn");
     gamePause.textContent = `Computer Selected ${capitalLetter(computerInput)}`;
-  }, 2000);
+  }, 200);
 
   setTimeout(() => {
     gamePause.classList.remove("mainTransitionIn");
     gamePause.textContent = "";
-  }, 3200);
+  }, 1500);
 
   setTimeout(() => {
     eachRoundScore(logic);
-  }, 3310);
+  }, 1600);
 }
 
 function eachRoundScore(logic) {
